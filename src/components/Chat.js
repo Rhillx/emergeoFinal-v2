@@ -4,13 +4,24 @@ import {
 	 Text,
 } from 'react-native';
 import firebase from 'firebase';
+import {connect} from 'react-redux';
 import { GiftedChat } from 'react-native-gifted-chat';
+
+import {getProfile} from '../actions/profile_actions';
+import {user} from '../reducers';
+
 
 
 class Chat extends React.Component {
 	state = {
 		messages: []
 	};
+
+	componentWillMount(){
+	
+
+		this.props.getProfile()
+	}
 
 
 	setUid() {
@@ -61,7 +72,10 @@ class Chat extends React.Component {
 	}
 
 	render() {
+		
+
         console.log(this.props);
+		
 
 		return (
 			<GiftedChat 
@@ -98,6 +112,8 @@ Chat.defaultProps = {
 	name: 'John',
 };
 
+const mapStateToProps = ({user}) => ({user});
 
 
-export default Chat;
+
+export default connect(mapStateToProps, {getProfile})(Chat);
