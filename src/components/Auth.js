@@ -51,12 +51,17 @@ class Auth extends Component{
               <TextInput placeholder="email" 
                           style={styles.inputStyle} 
                           onChangeText = {(email)=>this.setState({email})}
-                          value={email}>
+                          value={email}
+                          underlineColorAndroid='transparent'
+                          
+                          >
               </TextInput>
               <TextInput placeholder="password" 
                         style={styles.inputStyle}
                         onChangeText={(password) =>this.setState({password})} 
-                        value={password}>
+                        value={password}
+                        secureTextEntry={true}
+                        >
               </TextInput>
             </View>
 
